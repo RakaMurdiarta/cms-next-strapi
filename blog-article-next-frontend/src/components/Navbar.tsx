@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Hero from "./Hero";
+import { BASE_URL } from "@/lib/fetchData";
 
-const Navbar = () => {
+const Navbar = ({ data, product }: { data: any, product : any }) => {
   return (
     <div className="lg:flex gap-y-20 flex-col w-full max-w-5xl">
       <div className="z-10  items-center justify-between font-mono text-sm lg:flex">
@@ -12,23 +13,23 @@ const Navbar = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            By{" "}
-            <Image
+            By {data.data.attributes.Name}
+            {/* <Image
               src="/vercel.svg"
               alt="Vercel Logo"
               className="dark:invert"
               width={100}
               height={24}
               priority
-            />
+            /> */}
           </a>
         </div>
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
+        {/* <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
           Get started by editing&nbsp;
           <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
+        </p> */}
       </div>
-      <Hero />
+      <Hero avatar={BASE_URL + data.data.attributes.avatar.data.attributes.url} product={product} />
     </div>
   );
 };

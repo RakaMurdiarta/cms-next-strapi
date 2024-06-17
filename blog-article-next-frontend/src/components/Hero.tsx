@@ -1,25 +1,23 @@
 import React from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 
-const Hero = () => {
+const Hero = ({ avatar, product }: { avatar: string; product: any }) => {
+  console.log({ avatar });
   return (
     <React.Fragment>
       <div className="flex items-center gap-8">
         <React.Fragment>
           <Avatar className="w-28 h-28">
-            <AvatarImage src="https://github.com/shadcn.png" />
+            <AvatarImage src={avatar} />
             <AvatarFallback>CN</AvatarFallback>
           </Avatar>{" "}
         </React.Fragment>
         <div className="flex flex-col gap-6">
           <strong className="text-2xl m-0">
-            Paket Data Semua Operator
+            {product.data.attributes.Name}
           </strong>
           <p className="text-gray-700">
-            Nikmati kemudahan pembelian paket data untuk semua operator di
-            Indonesia. Dapatkan penawaran terbaik dan kemudahan transaksi dengan
-            layanan kami yang cepat dan aman. Pilih paket data sesuai kebutuhan
-            Anda dengan harga terjangkau dan berbagai bonus menarik.
+            {product.data.attributes.Description}
           </p>
         </div>
       </div>
