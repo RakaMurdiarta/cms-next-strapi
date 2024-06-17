@@ -846,15 +846,15 @@ export interface ApiProductProduct extends Schema.CollectionType {
       'oneToMany',
       'api::product-category.product-category'
     >;
-    product_item: Attribute.Relation<
-      'api::product.product',
-      'manyToOne',
-      'api::product-item.product-item'
-    >;
     owners: Attribute.Relation<
       'api::product.product',
       'oneToMany',
       'api::owner.owner'
+    >;
+    product_items: Attribute.Relation<
+      'api::product.product',
+      'oneToMany',
+      'api::product-item.product-item'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -916,6 +916,7 @@ export interface ApiProductItemProductItem extends Schema.CollectionType {
     singularName: 'product-item';
     pluralName: 'product-items';
     displayName: 'Product_Item';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -931,9 +932,9 @@ export interface ApiProductItemProductItem extends Schema.CollectionType {
     isActive: Attribute.Boolean &
       Attribute.Required &
       Attribute.DefaultTo<true>;
-    products: Attribute.Relation<
+    product: Attribute.Relation<
       'api::product-item.product-item',
-      'oneToMany',
+      'manyToOne',
       'api::product.product'
     >;
     createdAt: Attribute.DateTime;

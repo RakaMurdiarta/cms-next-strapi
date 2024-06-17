@@ -24,16 +24,16 @@
       "target": "api::product-category.product-category",
       "mappedBy": "product"
     },
-    "product_item": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::product-item.product-item",
-      "inversedBy": "products"
-    },
     "owners": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::owner.owner",
+      "mappedBy": "product"
+    },
+    "product_items": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::product-item.product-item",
       "mappedBy": "product"
     }
   }
