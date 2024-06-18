@@ -46,7 +46,7 @@ const CardDetail = ({ item, owner }: { item: any; owner: any }) => {
           Beli
         </a>
         <a
-          href={`/products/${item.id}`} // assuming you have a route set up for product details
+          href={`/product/${item.id}`} // assuming you have a route set up for product details
           className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition duration-300 flex items-center justify-center w-full"
         >
           Detail
