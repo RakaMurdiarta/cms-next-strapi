@@ -4,6 +4,10 @@ import { BASE_URL, fetchData } from "@/lib/fetchData";
 import { useParams, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import {
+  BlocksRenderer,
+  type BlocksContent,
+} from "@strapi/blocks-react-renderer";
 
 interface IProps {
   detail: any;
@@ -40,10 +44,14 @@ const Content = ({ detail }: { detail: any }) => {
         src={`${BASE_URL}${detail.data.attributes.thumbnail.data.attributes.url}`}
         className="w-full h-[40rem] object-cover"
       />
-      <div className="flex flex-col justify-center bg-opacity-50 py-10">
-        <h1 className="text-4xl font-bold mb-4">{detail.data.attributes.Title}</h1>
+      <div className="flex flex-col justify-center bg-opacity-50 py-10 gap-y-10">
+        <h1 className="text-4xl font-bold mb-4">
+          {detail.data.attributes.Title}
+        </h1>
         <h2 className="text-2xl mb-2">{detail.data.attributes.subTitle}</h2>
-        <p className="text-lg">{"content"}</p>
+        <p className="text-lg prose">
+          <BlocksRenderer content={detail.data.attributes.content} />
+        </p>
       </div>
     </section>
   );
